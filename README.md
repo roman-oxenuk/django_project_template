@@ -10,4 +10,5 @@ To create a new project by this template:
 * chmod +x manage.py
 * ./manage.py migrate
 * ./manage.py createsuperuser
+* pip install -r requirements.txt
 
