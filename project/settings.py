@@ -38,6 +38,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 PROJECT_APPS = (
+    'accounts',
 )
 
 INSTALLED_APPS = (
@@ -125,3 +126,6 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/media/'
+
+
+AUTH_USER_MODEL = 'accounts.User'
