@@ -11,3 +11,7 @@ To create a new project by this template:
 * chmod +x manage.py
 * ./manage.py migrate
 * ./manage.py createsuperuser
+
+To check it:
+* ./manage.py runserver
+* localhost:8000/hello
