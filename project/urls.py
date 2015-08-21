@@ -22,5 +22,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^hello/', TemplateView.as_view(template_name='base.html')),
+    url(r'^hello/', TemplateView.as_view(template_name='hello.html'), name='hello'),
+    url(r'^accounts/', include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

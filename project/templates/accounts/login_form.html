@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles widget_tweaks %}
+
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'accounts/signin.css' %}">
+{% endblock %}
+
+
+{% block content %}
+  <div class="container">
+
+    <form action="{% url 'login' %}" method="post" class="form-signin">
+      <h2 class="form-signin-heading">Login</h2>
+      {% if form.non_field_errors %}
+        {{ form.non_field_errors.as_ul }}
+      {% endif %}
+
+      {% csrf_token %}
+
+      <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+        {{ form.username|attr:"class:form-control"|attr:"placeholder:Email" }}
+        {{ form.username.errors }}
+      </div>
+
+      <div class="form-group {% if form.password.errors %}has-error{% endif %}">
+        {{ form.password|attr:"class:form-control"|attr:"placeholder:Password" }}
+        {{ form.password.errors }}
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Sign-in
+      </button>
+    </form>
+
+  </div>
+{% endblock %}
