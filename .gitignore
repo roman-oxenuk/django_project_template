@@ -1,0 +1,4 @@
+*.pyc
+*.pyo
+.vagrant
+project/sqlite3.db
