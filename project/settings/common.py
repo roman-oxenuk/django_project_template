@@ -15,8 +15,9 @@ import os
 import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.join(BASE_DIR, '..')
 
-PROJECT_ROOT = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 PROJECT_ROOT = os.path.normpath(os.path.abspath(PROJECT_ROOT))
 
 apps_root = os.path.join(os.path.dirname(__file__), '..', 'apps')
