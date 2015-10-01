@@ -11,6 +11,7 @@ To create a new project by this template:
 * chmod +x manage.py
 * ./manage.py migrate
 * ./manage.py createsuperuser
+* pip freeze > project/requirements.txt
 
 To check it:
 * ./manage.py runserver
