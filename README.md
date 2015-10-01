@@ -18,8 +18,10 @@ To check it:
 * localhost:8000/hello
 
 
-## Deploy
-login as myuser
+# Deploy
+login as myuser to project folder
+make directories:
+```
 mkproject <project_name>
 mkdir conf
 mkdir logs
@@ -27,15 +29,21 @@ mkdir static_content
 mkdir static_content/static
 mkdir static_content/media
 mkdir src
+```
+clone project source and install requirements and gunicorn
+```
 cd src
 git clone <gitlab source> .
 pip install -r project/requirements.txt
 pip install gunicorn
-
+```
+configuring gunicorn
+```
 cd ..
-// conf for gunicorn
 touch conf/gunicorn_conf.py
-// add [code] to this
+```
+gunicorn_conf.py content:
+```
 [code]
 import os
 
@@ -48,12 +56,11 @@ bind = "unix:///home/roman/py_projects/production_testproject/production_testpro
 # loglevel = "warn"
 # errorlog = "/home/roman/py_projects/production_testproject/logs/gunicorn_error.log"
 # accesslog = "/home/roman/py_projects/production_testproject/logs/gunicorn_access.log"
-[/code]
-
-// conf for nginx
-touch conf/<project_name>.nginx.conf
-// add [code] to this
-[code]
+```
+configuring nginx
+```touch conf/<project_name>.nginx.conf```
+conf/<project_name>.nginx.conf content
+```
 upstream production_testproject {
    ip_hash;
    server unix:///home/roman/py_projects/production_testproject/production_testproject.sock;
@@ -78,18 +85,24 @@ server {
         proxy_pass http://production_testproject;
     }
 }
-[/code]
+```
+link our config with nginx's sites-enabled folder
+```
 sudo ln -s <projects_path>/<project_name>/conf/<project_name>.nginx.conf /etc/nginx/sites-enabled/<project_name>.nginx.conf
-
-// django
+```
+and django commands
+```
 cd src
 ./manage.py collectstatic
 ./manage.py migrate
 ./manage.py createsuperuser
-
-
-// run it from src/
+```
+run gunicorn
+```
 gunicorn -c <projects_path>/<project_name>/conf/gunicorn_conf.py project.wsgi:application
-
-//run nginx
+```
+run nginx
+```
 sudo service nginx start
+```
+
