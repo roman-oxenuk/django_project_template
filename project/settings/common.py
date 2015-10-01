@@ -129,6 +129,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+# used for ./manage.py collectstatic only
+STATIC_FOLDER = 'static_content'
+STATIC_ROOT = os.path.join(BASE_DIR, '..', STATIC_FOLDER, 'static')
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 

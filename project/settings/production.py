@@ -2,9 +2,7 @@ import os
 from .common import *
 
 
-STATIC_FOLDER = 'static_content'
-STATIC_ROOT = os.path.join(BASE_DIR, '..', STATIC_FOLDER, 'static')
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', STATIC_CONTENT, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', STATIC_FOLDER, 'media')
 
 # DATABASES = {
 #     'default': {
