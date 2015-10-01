@@ -1,7 +1,7 @@
 # django_project_template
 Template for newborn django project. Use with django-admin.py startproject --template="https://github.com/roman-oxenuk/django_project_template/archive/master.zip" 
 
-To create a new project by this template:
+# New Django Project
 * mkproject projectname
 * pip install django
 * cd ../
@@ -51,38 +51,38 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings.production")
 
 # bind = "127.0.0.1:8888"
-bind = "unix:///home/roman/py_projects/production_testproject/production_testproject.sock"
+bind = "unix:///home/roman/py_projects/<project_name>/<project_name>.sock"
 # workers = 3
 # loglevel = "warn"
-# errorlog = "/home/roman/py_projects/production_testproject/logs/gunicorn_error.log"
-# accesslog = "/home/roman/py_projects/production_testproject/logs/gunicorn_access.log"
+# errorlog = "/home/roman/py_projects/<project_name>/logs/gunicorn_error.log"
+# accesslog = "/home/roman/py_projects/<project_name>/logs/gunicorn_access.log"
 ```
 configuring nginx
 ```touch conf/<project_name>.nginx.conf```
 conf/<project_name>.nginx.conf content
 ```
-upstream production_testproject {
+upstream <project_name> {
    ip_hash;
-   server unix:///home/roman/py_projects/production_testproject/production_testproject.sock;
+   server unix:///home/roman/py_projects/<project_name>/<project_name>.sock;
    # server 127.0.0.1:8888;
 }
 
 server {
     listen 127.0.0.1:80;
-    access_log /home/roman/py_projects/production_testproject/logs/nginx_access.log;
-    error_log /home/roman/py_projects/production_testproject/logs/nginx_error.log;
+    access_log /home/roman/py_projects/<project_name>/logs/nginx_access.log;
+    error_log /home/roman/py_projects/<project_name>/logs/nginx_error.log;
 
     location /static {
-        alias /home/roman/py_projects/production_testproject/static_content/static;
+        alias /home/roman/py_projects/<project_name>/static_content/static;
     }
 
     location /media {
-        alias /home/roman/py_projects/production_testproject/static_content/media;
+        alias /home/roman/py_projects/<project_name>/static_content/media;
     }
 
     location / {
         proxy_set_header Host $host;
-        proxy_pass http://production_testproject;
+        proxy_pass http://<project_name>;
     }
 }
 ```
