@@ -44,7 +44,6 @@ touch conf/gunicorn_conf.py
 ```
 gunicorn_conf.py content:
 ```
-[code]
 import os
 
 
