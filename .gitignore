@@ -1,5 +1,5 @@
 *.pyc
 *.pyo
 .vagrant
-project/sqlite3.db
+db.sqlite3
 project/media/
