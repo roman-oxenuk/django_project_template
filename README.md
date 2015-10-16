@@ -105,3 +105,8 @@ run nginx
 sudo service nginx start
 ```
 
+## TODO:
+* supervisord
+* PostgreSQL
+* New Relic
+* Sentry
