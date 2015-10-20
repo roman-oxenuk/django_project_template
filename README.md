@@ -105,8 +105,27 @@ run nginx
 sudo service nginx start
 ```
 
+add supervisor for keep gunicorn running
+```
+touch /etc/supervisor/<project_name>.conf
+```
+content on that file
+```
+[program:<project_name>]
+command=/home/myuser/.virtualenvs/<project_name>/bin/gunicorn -c /home/myuser/www/<project_name>/conf/gunicorn_conf.py project.wsgi:application
+directory=/home/myuser/www/<project_name>/src/
+autostart=true
+autorestart=true
+user=myuser
+```
+run supervisor
+```
+sudo supervisorctl reload
+```
+
+
 ## TODO:
-* supervisord
+* ~~supervisord~~
 * PostgreSQL
 * ~~Redis~~
 * ~~New Relic~~
